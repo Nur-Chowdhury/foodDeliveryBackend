@@ -1,0 +1,51 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider             = "prisma-client-py"
+    interface            = "asyncio"
+    recursive_type_depth = 5
+}
+
+enum OrderStatus {
+    PENDING
+    IN_TRANSIT
+    DELIVERED
+    CANCELLED
+}
+
+model User {
+    id        Int     @id @default(autoincrement())
+    username  String  @unique
+    email     String  @unique
+    password  String
+    is_staff  Boolean @default(false)
+    is_active Boolean @default(true)
+    orders    Order[]
+}
+
+model FoodItem {
+    id          Int     @id @default(autoincrement())
+    name        String
+    description String?
+    price       Float
+    category    String
+    is_active   Boolean @default(true)
+    orders      Order[]
+}
+
+model Order {
+    id           Int         @id @default(autoincrement())
+    quantity     Int
+    status       OrderStatus @default(PENDING)
+    total_price  Float
+    created_at   DateTime    @default(now())
+    
+    user_id      Int
+    user         User        @relation(fields: [user_id], references: [id])
+    
+    food_item_id Int
+    food_item    FoodItem    @relation(fields: [food_item_id], references: [id])
+}

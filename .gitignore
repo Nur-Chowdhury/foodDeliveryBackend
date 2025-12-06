@@ -1,0 +1,23 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Virtual Environment (CRITICAL: Do not upload this)
+venv/
+env/
+.venv/
+
+# Environment Variables (CRITICAL: Contains your passwords)
+.env
+
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/
+
+# VS Code / IDE settings
+.vscode/
+.idea/
+
+# Prisma generated client (optional, but good practice to keep clean)
+/prisma/client/
