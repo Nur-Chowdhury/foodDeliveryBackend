@@ -89,8 +89,8 @@ control, dynamic menus, secure auth, and real-time order tracking.
 Clone the repository:
 
 ``` bash
-git clone https://github.com/yourusername/food-delivery-backend.git
-cd food-delivery-backend
+git clone https://github.com/Nur-Chowdhury/foodDeliveryBackend.git
+cd foodDeliveryBackend
 ```
 
 Create a virtual environment
